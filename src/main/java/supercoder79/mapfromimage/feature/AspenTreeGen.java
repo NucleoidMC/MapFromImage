@@ -1,7 +1,6 @@
 package supercoder79.mapfromimage.feature;
 
 import java.util.Random;
-import java.util.function.Consumer;
 
 import xyz.nucleoid.plasmid.game.gen.GenHelper;
 import xyz.nucleoid.plasmid.game.gen.MapGen;
@@ -12,7 +11,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.ServerWorldAccess;
 
-public class AspenTreeGen implements MapGen {
+public final class AspenTreeGen implements MapGen {
 	public static final AspenTreeGen INSTANCE = new AspenTreeGen();
 
 	@Override

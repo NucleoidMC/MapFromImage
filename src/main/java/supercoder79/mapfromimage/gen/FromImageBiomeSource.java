@@ -77,6 +77,8 @@ public class FromImageBiomeSource extends BiomeSource {
 				case 0xFFAC9C07: return ShatteredSavannaGen.INSTANCE;
 				case 0xFFE0FFFF: return MountainsGen.INSTANCE;
 				case 0xFFBCFF29: return JungleGen.INSTANCE;
+				case 0xFF00C3FF: return WarmOceanGen.INSTANCE;
+				case 0xFF00C245: return MegaTaigaGen.INSTANCE;
 			}
 		}
 
