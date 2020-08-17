@@ -43,7 +43,6 @@ public class FromImageBiomeSource extends BiomeSource {
 			e.printStackTrace();
 		}
 		image = temp;
-		System.out.println("Using color model " + image.getColorModel());
 
 		sizeX = image.getWidth() / 2;
 		sizeZ = image.getHeight() / 2;
@@ -76,6 +75,8 @@ public class FromImageBiomeSource extends BiomeSource {
 				case 0xFF78D96F: return BirchForestGen.INSTANCE;
 				case 0xFF0000BC: return OceanGen.INSTANCE;
 				case 0xFFAC9C07: return ShatteredSavannaGen.INSTANCE;
+				case 0xFFE0FFFF: return MountainsGen.INSTANCE;
+				case 0xFFBCFF29: return JungleGen.INSTANCE;
 			}
 		}
 
