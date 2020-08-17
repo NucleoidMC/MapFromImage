@@ -42,7 +42,7 @@ public class FromImageBiomeSource extends BiomeSource {
 
 		BufferedImage temp;
 		try {
-			temp = ImageIO.read(new File("image.bmp"));
+			temp = ImageIO.read(new File("image.png"));
 		} catch (IOException e) {
 			temp = null;
 			e.printStackTrace();
@@ -74,10 +74,10 @@ public class FromImageBiomeSource extends BiomeSource {
 			int color = image.getRGB(x + sizeX, z + sizeZ);
 
 			switch (color) {
-				case 0xFF2FC621: return PlainsGen.INSTANCE;
-				case 0xFF21C65E: return TaigaGen.INSTANCE;
-				case 0xFFD3BE00: return SavannaGen.INSTANCE;
-				case 0xFF425E2B: return SwampGen.INSTANCE;
+				case 0xFF34CB26: return PlainsGen.INSTANCE;
+				case 0xFF28CD65: return TaigaGen.INSTANCE;
+				case 0xFFFAE527: return SavannaGen.INSTANCE;
+				case 0xFF1B3704: return SwampGen.INSTANCE;
 			}
 		}
 
