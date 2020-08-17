@@ -9,12 +9,7 @@ import javax.imageio.ImageIO;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import supercoder79.mapfromimage.biome.BiomeGen;
-import supercoder79.mapfromimage.biome.PlainsGen;
-import supercoder79.mapfromimage.biome.SavannaGen;
-import supercoder79.mapfromimage.biome.SwampGen;
-import supercoder79.mapfromimage.biome.TaigaGen;
-import supercoder79.mapfromimage.biome.VoidGen;
+import supercoder79.mapfromimage.biome.*;
 
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryLookupCodec;
@@ -78,6 +73,9 @@ public class FromImageBiomeSource extends BiomeSource {
 				case 0xFF28CD65: return TaigaGen.INSTANCE;
 				case 0xFFFAE527: return SavannaGen.INSTANCE;
 				case 0xFF1B3704: return SwampGen.INSTANCE;
+				case 0xFF78D96F: return BirchForestGen.INSTANCE;
+				case 0xFF0000BC: return OceanGen.INSTANCE;
+				case 0xFFAC9C07: return ShatteredSavannaGen.INSTANCE;
 			}
 		}
 

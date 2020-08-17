@@ -85,8 +85,8 @@ public class FromImageChunkGenerator extends ChunkGenerator {
 					double detailFactor = 0;
 					double weight = 0;
 
-					for (int aX = -4; aX <= 4; aX++) {
-						for (int aZ = -4; aZ < 4; aZ++) {
+					for (int aX = -8; aX <= 8; aX++) {
+						for (int aZ = -8; aZ < 8; aZ++) {
 							BiomeGen biome = biomeSource.fromImage(x + aX, z + aZ);
 							baseFactor += biome.baseFactor();
 							baseHeightLevel += biome.baseHeight();
@@ -156,6 +156,9 @@ public class FromImageChunkGenerator extends ChunkGenerator {
 		int chunkZ = region.getCenterChunkZ() * 16;
 
 		BiomeGen biome = biomeSource.fromImage(chunkX + 8, chunkZ + 8);
+
+		// Custom generation behavior
+		biome.generate(region, new BlockPos(chunkX, 0, chunkZ), random);
 
 		int treeAmt = biome.treeAmt(random);
 		for (int i = 0; i < treeAmt; i++) {
