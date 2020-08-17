@@ -80,10 +80,30 @@ public class FromImageChunkGenerator extends ChunkGenerator {
 		    	// Ensure that we're in bounds of the image
 		    	if (x >= -sizeX && z >= -sizeZ && x < sizeX && z < sizeZ) {
 
-		    		double height = baseNoise.eval(x / 256.0, z / 256.0) * 6;
-					height += detailNoise.eval(x / 16.0, z / 16.0) * 3;
+					double baseFactor = 0;
+					double baseHeightLevel = 0;
+					double detailFactor = 0;
+					double weight = 0;
 
-					height += 54;
+					for (int aX = -4; aX <= 4; aX++) {
+						for (int aZ = -4; aZ < 4; aZ++) {
+							BiomeGen biome = biomeSource.fromImage(x + aX, z + aZ);
+							baseFactor += biome.baseFactor();
+							baseHeightLevel += biome.baseHeight();
+							detailFactor += biome.detailFactor();
+
+							weight++;
+						}
+					}
+
+					baseFactor /= weight;
+					baseHeightLevel /= weight;
+					detailFactor /= weight;
+
+		    		double height = baseNoise.eval(x / 256.0, z / 256.0) * baseFactor;
+					height += detailNoise.eval(x / 16.0, z / 16.0) * detailFactor;
+
+					height += baseHeightLevel;
 
 					int baseHeight = (int) height;
 					int genHeight = (int) Math.max(height, 48);
@@ -164,13 +184,15 @@ public class FromImageChunkGenerator extends ChunkGenerator {
 			GrassGen.INSTANCE.generate(region, mutable.set(x, y, z).toImmutable(), random);
 		}
 
-		for (int i = 0; i < 4; i++) {
-			int x = chunkX + random.nextInt(16);
-			int z = chunkZ + random.nextInt(16);
-			int y = region.getTopY(Heightmap.Type.OCEAN_FLOOR_WG, x, z);
+		if (biome.generateDisks()) {
+			for (int i = 0; i < 4; i++) {
+				int x = chunkX + random.nextInt(16);
+				int z = chunkZ + random.nextInt(16);
+				int y = region.getTopY(Heightmap.Type.OCEAN_FLOOR_WG, x, z);
 
-			if (y <= 48) {
-				ImprovedDiskGen.INSTANCE.generate(region, mutable.set(x, y, z).toImmutable(), random);
+				if (y <= 48) {
+					ImprovedDiskGen.INSTANCE.generate(region, mutable.set(x, y, z).toImmutable(), random);
+				}
 			}
 		}
 	}

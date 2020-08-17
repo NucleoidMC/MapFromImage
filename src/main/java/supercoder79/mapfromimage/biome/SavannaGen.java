@@ -11,12 +11,12 @@ public class SavannaGen implements BiomeGen {
 
 	@Override
 	public double baseFactor() {
-		return 6;
+		return 4;
 	}
 
 	@Override
 	public double baseHeight() {
-		return 54;
+		return 56;
 	}
 
 	@Override

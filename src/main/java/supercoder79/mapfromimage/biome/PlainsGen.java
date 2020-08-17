@@ -16,7 +16,7 @@ public class PlainsGen implements BiomeGen {
 
 	@Override
 	public double baseHeight() {
-		return 54;
+		return 56;
 	}
 
 	@Override

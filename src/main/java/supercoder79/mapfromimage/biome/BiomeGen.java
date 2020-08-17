@@ -27,5 +27,9 @@ public interface BiomeGen {
 		return PoplarTreeGen.INSTANCE;
 	}
 
+	default boolean generateDisks() {
+		return true;
+	}
+
 	RegistryKey<Biome> getFakingBiome();
 }

@@ -15,17 +15,17 @@ public class SwampGen implements BiomeGen {
 
 	@Override
 	public double baseFactor() {
-		return 6;
+		return 1;
 	}
 
 	@Override
 	public double baseHeight() {
-		return 54;
+		return 48.65;
 	}
 
 	@Override
 	public double detailFactor() {
-		return 3;
+		return 1.75;
 	}
 
 	@Override
@@ -41,6 +41,16 @@ public class SwampGen implements BiomeGen {
 	@Override
 	public MapGen tree(int x, int z, Random random) {
 		return SwampTreeGen.INSTANCE;
+	}
+
+	@Override
+	public int shrubAmt(Random random) {
+		return random.nextInt(2);
+	}
+
+	@Override
+	public boolean generateDisks() {
+		return false;
 	}
 
 	@Override
