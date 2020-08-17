@@ -11,6 +11,8 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import supercoder79.mapfromimage.biome.BiomeGen;
 import supercoder79.mapfromimage.biome.PlainsGen;
+import supercoder79.mapfromimage.biome.SavannaGen;
+import supercoder79.mapfromimage.biome.SwampGen;
 import supercoder79.mapfromimage.biome.TaigaGen;
 import supercoder79.mapfromimage.biome.VoidGen;
 
@@ -74,6 +76,8 @@ public class FromImageBiomeSource extends BiomeSource {
 			switch (color) {
 				case 0xFF2FC621: return PlainsGen.INSTANCE;
 				case 0xFF21C65E: return TaigaGen.INSTANCE;
+				case 0xFFD3BE00: return SavannaGen.INSTANCE;
+				case 0xFF425E2B: return SwampGen.INSTANCE;
 			}
 		}
 
