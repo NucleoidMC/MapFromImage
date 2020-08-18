@@ -96,6 +96,8 @@ public class FromImageChunkGenerator extends ChunkGenerator {
 						}
 					}
 
+					BiomeGen biome = biomeSource.fromImage(x, z);
+
 					baseFactor /= weight;
 					baseHeightLevel /= weight;
 					detailFactor /= weight;
@@ -113,13 +115,13 @@ public class FromImageChunkGenerator extends ChunkGenerator {
 						if (y == baseHeight) {
 							// If the height and the generation height are the same, it means that we're on land
 							if (baseHeight == genHeight) {
-								state = Blocks.GRASS_BLOCK.getDefaultState();
+								state = biome.topState();
 							} else {
 								// height and genHeight are different, so we're under water. Place dirt instead of grass.
-								state = Blocks.DIRT.getDefaultState();
+								state = biome.underWaterState();
 							}
 						} else if ((baseHeight - y) <= 3) { //TODO: biome controls under depth
-							state = Blocks.DIRT.getDefaultState();
+							state = biome.underState();
 						} else if (y == 0) {
 							state = Blocks.BEDROCK.getDefaultState();
 						}

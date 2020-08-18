@@ -2,6 +2,8 @@ package supercoder79.mapfromimage.biome;
 
 import java.util.Random;
 
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.Heightmap;
@@ -13,6 +15,11 @@ import net.minecraft.world.gen.feature.ConfiguredFeatures;
 
 public class WarmOceanGen extends OceanGen {
 	public static final WarmOceanGen INSTANCE = new WarmOceanGen();
+
+	@Override
+	public BlockState underWaterState() {
+		return Blocks.SAND.getDefaultState();
+	}
 
 	@Override
 	public void generate(ServerWorldAccess world, BlockPos pos, Random random) {

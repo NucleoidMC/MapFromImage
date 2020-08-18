@@ -5,6 +5,8 @@ import java.util.Random;
 import xyz.nucleoid.plasmid.game.gen.MapGen;
 import xyz.nucleoid.plasmid.game.gen.feature.PoplarTreeGen;
 
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.ServerWorldAccess;
@@ -31,6 +33,18 @@ public interface BiomeGen extends MapGen {
 
 	default boolean generateDisks() {
 		return true;
+	}
+
+	default BlockState topState() {
+		return Blocks.GRASS_BLOCK.getDefaultState();
+	}
+
+	default BlockState underState() {
+		return Blocks.DIRT.getDefaultState();
+	}
+
+	default BlockState underWaterState() {
+		return Blocks.DIRT.getDefaultState();
 	}
 
 	RegistryKey<Biome> getFakingBiome();
