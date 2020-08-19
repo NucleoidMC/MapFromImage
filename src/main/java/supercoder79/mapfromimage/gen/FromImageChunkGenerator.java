@@ -75,6 +75,8 @@ public class FromImageChunkGenerator extends ChunkGenerator {
 		int chunkZ = chunk.getPos().z * 16;
 
 		BlockPos.Mutable mutable = new BlockPos.Mutable();
+		Random random = new Random();
+
 		for (int x = chunkX; x < chunkX + 16; x++) {
 		    for (int z = chunkZ; z < chunkZ + 16; z++) {
 		    	// Ensure that we're in bounds of the image
@@ -115,7 +117,7 @@ public class FromImageChunkGenerator extends ChunkGenerator {
 						if (y == baseHeight) {
 							// If the height and the generation height are the same, it means that we're on land
 							if (baseHeight == genHeight) {
-								state = biome.topState();
+								state = biome.topState(random);
 							} else {
 								// height and genHeight are different, so we're under water. Place dirt instead of grass.
 								state = biome.underWaterState();

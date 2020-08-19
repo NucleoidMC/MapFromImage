@@ -35,7 +35,7 @@ public interface BiomeGen extends MapGen {
 		return true;
 	}
 
-	default BlockState topState() {
+	default BlockState topState(Random random) {
 		return Blocks.GRASS_BLOCK.getDefaultState();
 	}
 
